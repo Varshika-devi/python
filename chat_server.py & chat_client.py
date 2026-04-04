@@ -13,3 +13,15 @@ while True:
     print("Client:", msg)
     reply = input("You: ")
     client.send(reply.encode())
+
+
+import socket
+
+client = socket.socket()
+client.connect(("localhost", 9999))
+
+while True:
+    msg = input("You: ")
+    client.send(msg.encode())
+    reply = client.recv(1024).decode()
+    print("Server:", reply)
